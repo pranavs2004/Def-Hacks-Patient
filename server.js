@@ -17,6 +17,13 @@ mongoose.connect(mongoDB, {
 })
 .catch(error => console.log(error));
 
+//login route
+
+app.post('/login', login)
+app.post('/register', register)
+app.use('/doctors', doctorRoutes)
+app.use('/patients', patientRoutes)
+
 const PORT = 3000;
 
 app.listen(PORT, () => {
