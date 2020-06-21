@@ -3,7 +3,7 @@ import React from "react";
 export default function DayScheduler(props) {
   let text;
   props.isStart
-    ? (text = "Select a a start time")
+    ? (text = "Select a start time")
     : (text = "Select an end time");
   if (props.isLocked) {text = "Submit your appointment"};
   //splits the day into 96 (which is 24 * 4) fifteen minute intervals
