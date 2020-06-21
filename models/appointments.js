@@ -12,7 +12,7 @@ var Appointments = new Schema({
   time: String,
   status: {
   type:String,
-  enum['coming', 'finished', 'cancelled',],
+  enum:['coming', 'finished', 'cancelled',],
 },
 });
 
