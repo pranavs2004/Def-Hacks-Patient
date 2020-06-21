@@ -4,13 +4,17 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Patient = new Schema({
-  doctorId: {
+  _id: {
   type:Number,
   min: [6, 'Too few characters']
+  required:true
 }
-  Name: String,
+  name: String,
   symptoms: {
   type:String,
-  enum['coming', 'finished', 'cancelled',]
 }
-}); 
+
+});
+
+
+module.exports = mongoose.model('Patient', Patient );

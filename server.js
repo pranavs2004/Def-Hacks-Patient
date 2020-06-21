@@ -16,12 +16,6 @@ mongoose.connect(mongoDB, {
   console.log('connect succesfully!');
 })
 .catch(error => console.log(error));
-var Schema = mongoose.Schema;
-
-var Patient = new Schema({
-  appointmentId:  ,
-
-});
 const PORT = 3000;
 
 app.listen(PORT, () => {
