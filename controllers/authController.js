@@ -37,5 +37,15 @@ const login = async (req, res) => {
         });
   };
 
+  // need to define different right user
+  const rightUser = (req, res, next) => {
+    req.user && req.user.id===req.params.id? next() : res.json({'message': 'You don\'t have access to do this.'});
+  }
+  
+  const loginRequired = (req, res, next) => {
+    req.user? next() : res.json({'message': 'You have to log in first.'});
+  };
+  
 
-module.exports = {login, register};
+
+module.exports = {login, register, rightUser, loginRequired};
