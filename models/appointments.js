@@ -4,11 +4,16 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Appointments = new Schema({
-  time: Number,
+  _id: {
+  type:Number,
+   min: [6, 'Too few characters'],
+   required:true,
+ },
+  time: String,
   status: {
   type:String,
-  enum['coming', 'finished', 'cancelled',]
-}
+  enum:['coming', 'finished', 'cancelled',],
+},
 });
 
 module.exports = mongoose.model('Appointment', Appointments );
