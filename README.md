@@ -54,9 +54,9 @@ A register route will take data like this from the frontend:
         phoneNumber:
     }
 }
-
-
 ```
+
+And will get an user back. 
 
 ### Doctor Route
 
