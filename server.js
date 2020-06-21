@@ -21,8 +21,7 @@ mongoose.connect(mongoDB, {
 })
 .catch(error => console.log(error));
 
-//login route
-
+//login route 
 app.post('/auth', authRoutes)
 app.use('/doctors', loginRequired, doctorRoutes)
 app.use('/patients', loginRequired, patientRoutes)
