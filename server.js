@@ -4,7 +4,7 @@ const app = express();
 var mongoose = require('mongoose');
 
 //Set up default mongoose connection
-var mongoDB = 'mongodb://127.0.0.1/my_database';
+var mongoDB = 'mongodb+srv://pranav:<pranav123>@cluster0-dn2vn.mongodb.net/<local_library>?retryWrites=true&w=majority';
 
 // Connect the mongoose with database
 mongoose.connect(mongoDB, {
@@ -16,7 +16,12 @@ mongoose.connect(mongoDB, {
   console.log('connect succesfully!');
 })
 .catch(error => console.log(error));
+var Schema = mongoose.Schema;
 
+var Patient = new Schema({
+  appointmentId:  ,
+
+});
 const PORT = 3000;
 
 app.listen(PORT, () => {
