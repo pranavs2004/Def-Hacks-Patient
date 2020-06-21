@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 //Define a schema
 var Schema = mongoose.Schema;
@@ -17,7 +18,7 @@ var Doctor = new Schema({
   type:String,
   required:[true,"Need an Username!"],
 },
-  password: {
+  hashPassword: {
   type:String,
   required:[true,"Need an Password!"],
   min:[7, "password must be more secure"],
@@ -36,6 +37,9 @@ var Doctor = new Schema({
 },
 patientsIDs:[Number],
 appointment: [String],
-});
 
+});
+Patient.methods.comparePasswords = (password, hashPassword) => {
+return bcrypt.compareSync(password, hashPassword);
+}
 module.exports = mongoose.model('Doctor', Doctor );

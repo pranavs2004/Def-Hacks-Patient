@@ -25,7 +25,7 @@ Add_time:	function(time, head, key) {
 
 Update:		function(id, head, time) {
 	var current = head;
-	
+
 	while(current.time != time && current != null) {
 		current = current.next;
 	}

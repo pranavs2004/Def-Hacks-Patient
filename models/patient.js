@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 //Define a schema
 var Schema = mongoose.Schema;
@@ -17,7 +18,7 @@ var Patient = new Schema({
     type:String,
     required:[true,"Need an Last Name!"],
   },
-  email_address:{
+  email:{
     type:String,
     required:[true,"Need an Email!"],
   },
@@ -30,7 +31,8 @@ validator: function (v) {
 //return true to pass the validation
 //return false to fail the validation
 return (/\d{3}-\d{3}-\d{4}/.test(v));
-}},
+}
+},
 //message to return if validation fails
 message: props => `${props.value} is not a valid number!`
 },
@@ -39,9 +41,12 @@ message: props => `${props.value} is not a valid number!`
     required:[true,"Need an Username!"],
     max:[10,"Don't keep the username too long"],
   },
-  password:{
+  hashPassword:{
     type:String,
     required:[true,"Need an Password!"],
+    min:[7, "password must be more secure"],
+
+}
   },
   symptoms: {
   type:String,
@@ -51,5 +56,7 @@ message: props => `${props.value} is not a valid number!`
   doctorIDs:[Number],
 });
 
-
+Patient.methods.comparePasswords = (password, hashPassword) => {
+return bcrypt.compareSync(password, hashPassword);
+}
 module.exports = mongoose.model('Patient', Patient );
