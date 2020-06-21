@@ -17,10 +17,6 @@ export default function Calendar(props) {
       .format("d");
   }
 
-  function handleClick() {
-    props.onChange();
-  }
-
   const emptyDates = [];
 
   for (let i = 0; i < getFirstDay(); i++) {
@@ -29,12 +25,12 @@ export default function Calendar(props) {
 
   const daysInMonth = [];
 
-  for (let i = 1; i < props.date.daysInMonth(); i++) {
+  for (let i = 1; i < props.currentDate.daysInMonth() + 1; i++) {
     let className;
     let canClick;
-    if (i < props.date.date()) {
+    if (i < props.currentDate.date()) {
       className = "dayTilePast";
-    } else if (i > props.date.date()) {
+    } else if (i > props.currentDate.date()) {
       className = "dayTileFuture";
       canClick = true;
     } else {
@@ -42,8 +38,14 @@ export default function Calendar(props) {
       canClick = true;
     }
 
-    emptyDates.push(
-      <td key={i} className={className} onClick={canClick ? handleClick : null}>
+    daysInMonth.push(
+      <td
+        type="levelElement"
+        key={i}
+        date={i}
+        className={className}
+        onClick={canClick ? props.onChange : null}
+      >
         {i}
       </td>
     );
@@ -72,7 +74,7 @@ export default function Calendar(props) {
   });
   return (
     <table>
-      <thead className="MonthHeader">{props.date.format("MMMM")}</thead>
+      <thead className="MonthHeader">{props.currentDate.format("MMMM")}</thead>
       <tr>{dayNames}</tr>
       <tbody>{daysinmonth}</tbody>
     </table>
