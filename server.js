@@ -4,7 +4,7 @@ const app = express();
 var mongoose = require('mongoose');
 
 //Set up default mongoose connection
-var mongoDB = 'mongodb://127.0.0.1/my_database';
+var mongoDB = 'mongodb+srv://pranav:<pranav123>@cluster0-dn2vn.mongodb.net/<local_library>?retryWrites=true&w=majority';
 
 // Connect the mongoose with database
 mongoose.connect(mongoDB, {
@@ -16,11 +16,11 @@ mongoose.connect(mongoDB, {
   console.log('connect succesfully!');
 })
 .catch(error => console.log(error));
+<<<<<<< HEAD
 
 //login route
 
-app.post('/login', login)
-app.post('/register', register)
+app.post('/auth', authRoutes)
 app.use('/doctors', doctorRoutes)
 app.use('/patients', patientRoutes)
 
