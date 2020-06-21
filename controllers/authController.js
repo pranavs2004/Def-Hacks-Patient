@@ -25,9 +25,9 @@ const login = async (req, res) => {
   const register = (req, res) => {
     const identity = req.user.identity
     const capitalized = identity.charAt(0).toUpperCase() + identity.slice(1)
-    ${capitalized}.init()
+    capitalized.init()
         .then( async ()=>{
-          const user = new ${capitalized}(req.body);
+          const user = new capitalized(req.body);
           user.hashPassword = bcrypt.hashSync(req.body.password, 10);
           const result = await user.save();
           res.json(result);

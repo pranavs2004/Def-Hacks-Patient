@@ -1,17 +1,16 @@
 // getAppointment, getAppointments, createAppointment, updateAppointment
 const appointmentFuntion = require('../linked_list');
 const Appoinment = require('../models/appointments');
-const Mongoose
+const Mongoose = require('mongoose')
 
-const getAppointment =
+const getAppointment=async (req,res) =>{
+
+};
+
 const getAppointments=async (req,res) =>{
 
 };
-
-const getAppointments=async (req,res) =>{
-
-};
-const createAppointments=async (req,res) =>{
+const createAppointment=async (req,res) =>{
 
 };
 const updateAppointment=async (req,res) =>{

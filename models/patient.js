@@ -46,8 +46,7 @@ message: props => `${props.value} is not a valid number!`
     required:[true,"Need an Password!"],
     min:[7, "password must be more secure"],
 
-}
-  },
+},
   symptoms: {
   type:String,
   max:[100,"Keep it shorter"],

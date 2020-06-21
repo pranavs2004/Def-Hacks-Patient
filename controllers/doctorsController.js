@@ -5,9 +5,18 @@ const getDoctor= async (req, res) => {
   try {
     doctor= await Doctor.findById(req.params.id);
     res.json({
-      'Doctorname': Doctor.Doctorname,
-      'email': Doctor.email,
+      'Doctorname': doctor.Doctorname,
+      'email': doctor.email,
     });
+  } catch (err) {
+    res.json(err.message);
+  }
+};
+
+const getDoctors= async (req, res) => {
+  try {
+    doctors= await Doctor.find({});
+    res.json(doctors);
   } catch (err) {
     res.json(err.message);
   }
@@ -29,4 +38,4 @@ const updateDoctor= (req, res) => {
   });
 };
 
-module.exports = {getDoctor, updateDoctor};
+module.exports = {getDoctor, getDoctors, updateDoctor};

@@ -10,6 +10,6 @@ router.route('/')
 
 router.route('/:AppointmentId')
     .get(getAppointment)
-    .put(validateAppointment, updateAppointment);
+    .put(updateAppointment);
 
 module.exports = router;
