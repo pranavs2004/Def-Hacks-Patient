@@ -11,9 +11,9 @@ const login = async (req, res) => {
       if (!user) res.json({'message': 'User not found'});
       else if (user && user.comparePasswords(req.body.password, user.hashPassword)) {//make sure user has hashpassword and comparepasswords in user.js
         res.json({'token': jwt.sign({
-          id: user.id,
+          _id: user.id,
           email: user.email,
-          name: user.name,
+          username: user.name,
         }, 'secretKey'),
         });
       } else {
