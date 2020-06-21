@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
 const doctorRoutes = require('./routes/doctorRoutes');
 const patientRoutes = require('./routes/patientRoutes')
-const {loginRequired} = require('../Controllers/authController')
+const {loginRequired} = require('../controllers/authController')
 
 
 //Set up default mongoose connection

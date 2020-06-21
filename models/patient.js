@@ -30,7 +30,7 @@ validator: function (v) {
 //return true to pass the validation
 //return false to fail the validation
 return (/\d{3}-\d{3}-\d{4}/.test(v));
-},
+}},
 //message to return if validation fails
 message: props => `${props.value} is not a valid number!`
 },

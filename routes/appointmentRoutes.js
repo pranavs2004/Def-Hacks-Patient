@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router({mergeParams: true});
-const {validateAppointment} = require('../Controllers/authController')
+// const {validateAppointment} = require('../Controllers/authController')
 const {getAppointment, getAppointments, createAppointment, updateAppointment} = require('../controllers/AppointmentsController')
 
 

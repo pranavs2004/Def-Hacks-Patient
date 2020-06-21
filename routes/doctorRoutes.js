@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {rightUser, validateUser} = require('../Controllers/authController')
+const {rightUser, validateUser} = require('../controllers/authController')
 const {getDoctor, getDoctors, updateDoctor} = require('../controllers/doctorsController')
 
 router.get('/', getDoctors);
