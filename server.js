@@ -2,6 +2,9 @@ const express = require('express');
 
 const app = express();
 var mongoose = require('mongoose');
+const authRoutes = require('./routes/authRoutes');
+const doctorRoutes = require('./routes/doctorRoutes');
+const patientRoutes = require('./routes/patientRoutes')
 
 //Set up default mongoose connection
 var mongoDB = 'mongodb+srv://pranav:<pranav123>@cluster0-dn2vn.mongodb.net/<local_library>?retryWrites=true&w=majority';
@@ -16,7 +19,6 @@ mongoose.connect(mongoDB, {
   console.log('connect succesfully!');
 })
 .catch(error => console.log(error));
-<<<<<<< HEAD
 
 //login route
 
