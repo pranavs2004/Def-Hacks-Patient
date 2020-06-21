@@ -7,6 +7,6 @@ const {login, logout, register} = require('../controllers/authController');
 router.post('/login', login);
 router.post('/register', register);
 // Not sure if we need log out or just tell the frontend to clear the JWT token
-router.post('/logout', logout)
+// router.post('/logout', logout)
 
 module.exports = router;

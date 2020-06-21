@@ -38,4 +38,4 @@ const login = async (req, res) => {
   };
 
 
-module.exports = {login, logout, register};
+module.exports = {login, register};
