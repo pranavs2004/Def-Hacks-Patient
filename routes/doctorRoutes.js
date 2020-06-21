@@ -9,7 +9,7 @@ router.route('/:doctorId')
     .get(getDoctor)
     .put(rightUser,validateUser, updateDoctor);// You have to be the right Doctor to change the Doctor
 
-router.use('/:doctorId/appointments', appointmentRoutes);
+router.use('/:doctorId/appointments', rightUser, appointmentRoutes);
 
 
 module.exports = router;
