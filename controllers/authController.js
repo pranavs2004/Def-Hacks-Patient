@@ -23,7 +23,7 @@ const login = async (req, res) => {
   };
 
   const register = (req, res) => {
-    const identity = user.identity
+    const identity = req.body.identity
     const capitalized = identity.charAt(0).toUpperCase() + identity.slice(1)
     capitalized.init()
         .then( async ()=>{
