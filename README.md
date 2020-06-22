@@ -38,6 +38,7 @@ A login route will take email and password from the frontend like this:
 }
 ```
 And if it is success, it will return a token to the front, so user can carry that going through the website.
+{"token": ...............................}
 
 2. post '/auth/register'
 
@@ -78,15 +79,19 @@ This route is used for getting all of the appointments that a doctor has.
 
 5. POST '/doctors/:doctorId/appointments'
 
-This route is used for creating an appointment that a doctor has. 
+This route is used for creating an appointment that a doctor has. i also need the patientId to get this done. So please pass a patientId to me, like: 
+
+```
+{
+    appointments: {
+
+    }
+}
+```
 
 6. GET '/doctors/:doctorId/appointments/:appointmentId'
 
 This route is used for reading an appointment that a doctor has. 
-
-7. PUT '/doctors/:doctorId/appointments/:appointmentId'
-
-This route is used for editing an appointment that a doctor has. 
 
 ### Patient Route
 
@@ -105,11 +110,6 @@ This route is used for creating an appointment that a patient has.
 4. GET '/:patientId/appointments/:appointmentId'
 
 This route is used for reading an appointment that a patient has. 
-
-5. PUT '/:patientId/appointments/:appointmentId'
-
-This route is used for changing an appointment that a patient has. 
-
 
 
 

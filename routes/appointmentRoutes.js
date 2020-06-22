@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router({mergeParams: true});
-// const {validateAppointment} = require('../Controllers/authController')
-const {getAppointment, getAppointments, createAppointment, updateAppointment} = require('../controllers/appointmentsController')
-
+const {getAppointment, getAppointments, createAppointment} = require('../controllers/appointmentsController')
 
 router.route('/')
 .get(getAppointments)
@@ -10,6 +8,5 @@ router.route('/')
 
 router.route('/:appointmentId')
     .get(getAppointment)
-    .put(updateAppointment);
 
 module.exports = router;

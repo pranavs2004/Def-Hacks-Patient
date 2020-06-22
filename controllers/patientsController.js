@@ -15,7 +15,7 @@ const getPatient= async (req, res) => {
 
 const getPatients= async (req, res) => {
   try {
-    patients= await Patient.findById({});
+    patients= await Patient.findById({doctorIds: req.params.doctorId});
     res.json(patients);
   } catch (err) {
     res.json(err.message);
