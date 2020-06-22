@@ -1,11 +1,15 @@
 const express = require('express');
 const app = express();
 var mongoose = require('mongoose');
-const authRoutes = require('./routes/authRoutes');
 const doctorRoutes = require('./routes/doctorRoutes');
 const patientRoutes = require('./routes/patientRoutes')
 const {loginRequired} = require('./controllers/authController')
 const bodyParser = require('body-parser')
+const listEndpoints = require('express-list-endpoints');
+const {login, register} = require('./controllers/authController');
+
+
+
 
 
 //Set up default mongoose connection
@@ -41,13 +45,18 @@ app.use(async (req, res, next) => {
   }
 });
 
+
+//login route 
+app.post('/auth/login', login);
+app.post('/auth/register', register);
 //login route
-app.post('/auth', authRoutes)
+
 app.use('/doctors', loginRequired, doctorRoutes)
 app.use('/patients', loginRequired, patientRoutes)
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log(`listening on port ${PORT}`)
+    console.log(`listening on port ${PORT}`);
+    console.log(listEndpoints(app));
 })
