@@ -13,7 +13,11 @@ const {login, register} = require('./controllers/authController');
 
 
 //Set up default mongoose connection
-var mongoDB = 'mongodb+srv://pranav:<pranav123>@cluster0-dn2vn.mongodb.net/<local_library>?retryWrites=true&w=majority';
+//mongodb://dbuser:dbpassword@mongo-cluster-shard-00-00-ixqtu.mongodb.net:27017,mongo-cluster-shard-00-01-ixqtu.mongodb.net:27017,mongo-cluster-shard-00-02-ixqtu.mongodb.net:27017/test?ssl=true&replicaSet=mongo-cluster-shard-0&authSource=admin&retryWrites=true
+//var mongoDB = 'mongodb+srv://pranav:pranav123@cluster0-dn2vn.mongodb.net/<local_library>?retryWrites=true&w=majority';
+//var mongoDB ='mongodb://pranav:pranav123@mongo-cluster-shard-00-00-ixqtu.mongodb.net:27017,mongo-cluster-shard-00-01-ixqtu.mongodb.net:27017,mongo-cluster-shard-00-02-ixqtu.mongodb.net:27017/test?ssl=true&replicaSet=mongo-cluster-shard-0&authSource=admin&retryWrites=true'
+//var mongoDB = 'mongodb+srv://pranav:pranav123@cluster0-dn2vn.mongodb.net/test?retryWrites=true&w=majority';
+var mongoDB='mongodb+srv://pranav:pranav123@cluster0-dn2vn.mongodb.net/local_library?retryWrites=true&w=majority';
 
 // Connect the mongoose with database
 mongoose.connect(mongoDB, {
@@ -41,13 +45,16 @@ app.use(async (req, res, next) => {
   }
 });
 
+
 //login route 
 app.post('/auth/login', login);
 app.post('/auth/register', register);
+//login route
+
 app.use('/doctors', loginRequired, doctorRoutes)
 app.use('/patients', loginRequired, patientRoutes)
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`);
