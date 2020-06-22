@@ -39,7 +39,8 @@ patientsIDs:[Number],
 appointment: [String],
 
 });
-Patient.methods.comparePasswords = (password, hashPassword) => {
-return bcrypt.compareSync(password, hashPassword);
+
+Doctor.methods.comparePasswords = (password, hashPassword) => {
+  return bcrypt.compareSync(password, hashPassword);
 }
 module.exports = mongoose.model('Doctor', Doctor );

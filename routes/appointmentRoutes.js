@@ -8,8 +8,8 @@ router.route('/')
 .get(getAppointments)
 .post(createAppointment)
 
-router.route('/:AppointmentId')
+router.route('/:appointmentId')
     .get(getAppointment)
-    .put(validateAppointment, updateAppointment);
+    .put(updateAppointment);
 
 module.exports = router;

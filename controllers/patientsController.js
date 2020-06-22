@@ -13,6 +13,15 @@ const getPatient= async (req, res) => {
   }
 };
 
+const getPatients= async (req, res) => {
+  try {
+    patients= await Patient.findById({});
+    res.json(patients);
+  } catch (err) {
+    res.json(err.message);
+  }
+};
+
 const updatePatient= (req, res) => {
   const id = req.params.id;
   Patient= req.body; 
@@ -29,4 +38,4 @@ const updatePatient= (req, res) => {
   });
 };
 
-module.exports = {getPatient, updatePatient};
+module.exports = {getPatient, updatePatient, getPatients};
