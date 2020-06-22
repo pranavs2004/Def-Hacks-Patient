@@ -27,7 +27,7 @@ const getAppointments=async (req, res) =>{
 const createAppointment= async (req, res) =>{
  try{
    const conflictAppt = Appoinment.find({date: req.body.date, timeSlot: req.body.timeSlot})
-   if(conflictAppt) res.json('message': 'Sorry, this time slot is booked.')
+   if(conflictAppt) res.json({'message': 'Sorry, this time slot is booked.'})
    else{
    const appt = new Appoinment(req.body);
    appt.doctorId = req.params.doctorId;
