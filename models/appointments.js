@@ -14,8 +14,16 @@ var Appointments = new Schema({
   type:String,
   enum:['coming', 'finished', 'cancelled',],
 },
-doctorId:[Number],
-patientID: [Number],
+doctorId:{
+  type:Number,
+   min: [6, 'Too few characters'],
+   required:true,
+ },
+patientID: {
+  type:Number,
+   min: [6, 'Too few characters'],
+   required:true,
+ },
 });
 
 module.exports = mongoose.model('Appointment', Appointments );

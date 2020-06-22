@@ -38,6 +38,7 @@ A login route will take email and password from the frontend like this:
 }
 ```
 And if it is success, it will return a token to the front, so user can carry that going through the website.
+{"token": ...............................}
 
 2. post '/auth/register'
 
