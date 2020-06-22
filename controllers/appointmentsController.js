@@ -4,7 +4,7 @@ const Appoinment = require('../models/appointments');
 const Mongoose = require('mongoose')
 
 const getAppointment=async (req, res) =>{
-  Appoinment.find({})
+//   Appoinment.find({})
 };
 
 const getAppointments=async (req, res) =>{

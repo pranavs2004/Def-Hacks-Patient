@@ -21,6 +21,21 @@ mongoose.connect(mongoDB, {
 })
 .catch(error => console.log(error));
 
+app.use(bodyParser.json());
+
+app.use(async (req, res, next) => {
+  if (req.headers && req.headers.authorization && req.headers.authorization.split(' ')[0]==='JWT') {
+    token = req.headers.authorization.split(' ')[1];
+    jwt.verify(token, 'secretKey', (err, decoded) => {
+      err? res.json(err.message) : req.user = decoded;
+      next();
+    } );
+  } else {
+    req.user = undefined;
+    next();
+  }
+});
+
 //login route 
 app.post('/auth', authRoutes)
 app.use('/doctors', loginRequired, doctorRoutes)
