@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt  =  require('bcrypt')
 
 const login = async (req, res) => {
-    const identity = req.user.identity
+    const identity = req.body.user.identity
     const capitalized = identity.charAt(0).toUpperCase() + identity.slice(1)
     capitalized.findOne({email: req.body.email}, (err, user) => {
       if (err) res.json(err.message);
@@ -20,7 +20,7 @@ const login = async (req, res) => {
         res.send({'message': 'Your password and email doesn\'t match.'});
       }
     });
-  }; 
+  };
 
   const register = (req, res) => {
     const identity = req.user.identity
@@ -45,11 +45,11 @@ const login = async (req, res) => {
   const rightPatient = (req, res, next) => {
     req.user && req.user.id===req.params.patientId? next() : res.json({'message': 'You don\'t have access to do this.'});
   }
-  
+
   const loginRequired = (req, res, next) => {
     req.user? next() : res.json({'message': 'You have to log in first.'});
   };
-  
+
 
 
 module.exports = {login, register, rightDoctor,rightPatient, loginRequired};
