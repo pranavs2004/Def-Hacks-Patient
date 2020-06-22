@@ -7,6 +7,7 @@ const {loginRequired} = require('./controllers/authController')
 const bodyParser = require('body-parser')
 const listEndpoints = require('express-list-endpoints');
 const {login, register} = require('./controllers/authController');
+const jwt = require('jsonwebtoken');
 
 
 
