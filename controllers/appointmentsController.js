@@ -24,7 +24,7 @@ const getAppointments=async (req, res) =>{
 };
 
 const createAppointment=async (req, res) =>{
-
+  
 };
 
 module.exports = {getAppointment, getAppointments, createAppointment}
