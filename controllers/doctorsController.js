@@ -5,7 +5,7 @@ const getDoctor= async (req, res) => {
   try {
     doctor= await Doctor.findById(req.params.id);
     res.json({
-      'Doctorname': doctor.Doctorname,
+      'username': doctor.username,
       'email': doctor.email,
     });
   } catch (err) {

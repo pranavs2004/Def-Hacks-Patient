@@ -38,8 +38,12 @@ const login = async (req, res) => {
   };
 
   // need to define different right user
-  const rightUser = (req, res, next) => {
-    req.user && req.user.id===req.params.id? next() : res.json({'message': 'You don\'t have access to do this.'});
+  const rightDoctor = (req, res, next) => {
+    req.user && req.user.id===req.params.doctorId? next() : res.json({'message': 'You don\'t have access to do this.'});
+  }
+
+  const rightPatient = (req, res, next) => {
+    req.user && req.user.id===req.params.patientId? next() : res.json({'message': 'You don\'t have access to do this.'});
   }
   
   const loginRequired = (req, res, next) => {
@@ -48,4 +52,4 @@ const login = async (req, res) => {
   
 
 
-module.exports = {login, register, rightUser, loginRequired};
+module.exports = {login, register, rightDoctor,rightPatient, loginRequired};
