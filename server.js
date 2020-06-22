@@ -21,12 +21,12 @@ mongoose.connect(mongoDB, {
 })
 .catch(error => console.log(error));
 
-//login route 
+//login route
 app.post('/auth', authRoutes)
 app.use('/doctors', loginRequired, doctorRoutes)
 app.use('/patients', loginRequired, patientRoutes)
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`)
