@@ -26,10 +26,15 @@ const getAppointments=async (req, res) =>{
 
 const createAppointment= async (req, res) =>{
  try{
+   const conflictAppt = Appoinment.find({date: req.body.date, timeSlot: req.body.timeSlot})
+   if(conflictAppt) res.json('message': 'Sorry, this time slot is booked.')
+   else{
    const appt = new Appoinment(req.body);
+   appt.doctorId = req.params.doctorId;
+   appt.patientId = req.user.id
    const result = await appt.save();
    res.json(result)
-} catch(err){
+}} catch(err){
     res.json(err.message)
 }
 };
